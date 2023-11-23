@@ -1,0 +1,36 @@
+# import required libraries
+import pandas as pd
+import numpy as np
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt
+# Load the dataset
+data=pd.read_csv("C:\CC\Salary.csv")
+# Prepare the dataset for training 
+X=data.drop(['Salary'],axis=1)
+y=data['Salary']
+# Split the data into Trained and test set
+train_data,test_data,train_labels,test_labels=train_test_split(X,y,train_size=0.2,random_state=0)
+# Train the model
+lin_reg=LinearRegression()
+lin_reg.fit(train_data,train_labels)
+# Predict the salary on the test data
+pred_labels=lin_reg.predict(test_data)
+pred_labels
+actual_salary=np.array(data["Salary"])
+actual_salary
+# Plot a graph 
+plt.plot(actual_salary,label='Actual Salary')
+plt.plot(pred_labels,label='Predicted Salary')
+# add axis labels and title
+plt.ylabel('Predicted Salary')
+plt.xlabel('Actual Salary')
+plt.title('Actual Vs Predicted Salaries')
+# Add legend and grid
+plt.legend()
+plt.grid(True)
+# Display the plot
+plt.show()
+# Display the train and test scores
+print("Training set score:{:.3f}".format(lin_reg.score(train_data,train_labels)))
+print("Test set score:{:.3f}".format(lin_reg.score(test_data,test_labels)))
