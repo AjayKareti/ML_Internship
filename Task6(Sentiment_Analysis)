@@ -1,0 +1,34 @@
+import pandas as pd
+import numpy as np
+import re
+import nltk
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
+df = pd.read_csv('C:\\CC\data.csv')
+X = df['Sentence']
+y = df['Sentiment']
+df
+X
+y
+# fit CountVectorizer on the preprocessed text data with preprocessing function defined earlier 
+cv = CountVectorizer() 
+# transform the preprocessed text data into numerical feature vectors using CountVectorizer
+test = cv.fit_transform(X)  
+ # create LogisticRegression object 
+model = LogisticRegression()
+# train the model
+model.fit(test,y) 
+#make predictions
+predictions = model.predict(test)
+predictions
+# Calculate accuracy of model
+accuracy = accuracy_score(y, predictions)
+accuracy
+# calculate Confusion Matrix
+confusion_matrix = confusion_matrix(y, predictions)
+confusion_matrix
+# calculate classification report of the model 
+classification_report = classification_report(y, predictions) 
+classification_report
