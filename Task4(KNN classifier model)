@@ -9,7 +9,6 @@ from sklearn.metrics import confusion_matrix
 from sklearn.datasets import load_iris
 from sklearn import preprocessing
 from sklearn import neighbors
-import matplotlib.pyplot as plt
 
 # Loading datasets
 iris=load_iris()
