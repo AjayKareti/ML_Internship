@@ -10,7 +10,7 @@ data=pd.read_csv("C:\CC\Salary.csv")
 X=data.drop(['Salary'],axis=1)
 y=data['Salary']
 # Split the data into Trained and test set
-train_data,test_data,train_labels,test_labels=train_test_split(X,y,train_size=0.2,random_state=0)
+train_data,test_data,train_labels,test_labels=train_test_split(X,y,test_size=0.2,random_state=0)
 # Train the model
 lin_reg=LinearRegression()
 lin_reg.fit(train_data,train_labels)
