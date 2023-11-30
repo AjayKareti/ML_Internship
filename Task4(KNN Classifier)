@@ -30,7 +30,7 @@ X_test=scaler.transform(X_test)
 # Train the data using fit() function and predict the test set
 knn=neighbors.KNeighborsClassifier(n_neighbors=3)
 knn.fit(X_train,y_train)
-y_pred=knn.predict(X_test
+y_pred=knn.predict(X_test)
 
 # Displaying accuracy of the model
 print(accuracy_score(y_test,y_pred))
